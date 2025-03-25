@@ -1,0 +1,9 @@
+---
+- name: add a student user in all servers
+  become: true
+  hosts: all
+  tasks:
+    - name: add student user
+      ansible.builtin.user:
+        name: student3
+        state: present
