@@ -9,15 +9,15 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://your-repository-url.git'  // Replace with your actual repo
+                git 'https://github.com/shamsher85/ansible.demo.git'  
             }
         }
 
         stage('Run Ansible Playbook') {
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'ansible-ssh-key', keyFileVariable: 'SSH_KEY_PATH')]) {
+                withCredentials([sshUserPrivateKey(credentialsId: 'ansible-ssh-key', usernameVariable: 'ANSIBLE_USER')]) {
                     sh '''
-                    ansible-playbook -i ${ANSIBLE_HOST}, -u ${ANSIBLE_USER} --key-file=$SSH_KEY_PATH playbook.yml
+                    ansible-playbook -i ${ANSIBLE_HOST}, -u ${ANSIBLE_USER} useradd.yml
                     '''
                 }
             }
