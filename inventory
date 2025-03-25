@@ -1,0 +1,5 @@
+[all]
+servera ansible_host=192.168.231.129
+serverb ansible_host=192.168.231.130
+localhost ansible_connection=local
+
